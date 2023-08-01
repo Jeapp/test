@@ -24,7 +24,7 @@ def download_and_apply_update(latest_version):
         with zipfile.ZipFile("update.zip", "r") as zip_ref:
             zip_ref.extractall(".")
 
- #    os.remove("update.zip")
+            os.remove("update.zip")
 
         # Restart the updated version
         python = sys.executable
