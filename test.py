@@ -2,10 +2,11 @@ import requests
 import zipfile
 import os
 import sys
+import time
 
 def get_latest_version_from_repository():
     # Replace this URL with the URL to your repository and the file containing the latest version
-    repository_url = "https://github.com/Jeapp/test/blob/main/version.txt"
+    repository_url = "https://github.com/Jeapp/test/raw/main/version.txt"
     response = requests.get(repository_url)
     if response.status_code == 200:
         return response.text.strip()
@@ -23,7 +24,7 @@ def download_and_apply_update(latest_version):
         with zipfile.ZipFile("update.zip", "r") as zip_ref:
             zip_ref.extractall(".")
 
-        os.remove("update.zip")
+ #    os.remove("update.zip")
 
         # Restart the updated version
         python = sys.executable
@@ -42,7 +43,11 @@ def check_for_updates():
             download_and_apply_update(latest_version)
     else:
         print("Your program is up to date.")
+        time.sleep(2)
+        print("Im black")
+        time.sleep(100)
 
+        
 def main():
     print("Welcome to your application!")
     check_for_updates()
