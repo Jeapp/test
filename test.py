@@ -5,7 +5,7 @@ import sys
 
 def get_latest_version_from_repository():
     # Replace this URL with the URL to your repository and the file containing the latest version
-    repository_url = "https://github.com/Jeapp/test/raw/main/version.txt"
+    repository_url = "https://github.com/Jeapp/test/blob/main/version.txt"
     response = requests.get(repository_url)
     if response.status_code == 200:
         return response.text.strip()
