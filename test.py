@@ -17,14 +17,18 @@ def download_and_apply_update(latest_version):
     update_url = "https://github.com/Jeapp/test/raw/main/update.zip"
     response = requests.get(update_url)
 
+
     if response.status_code == 200:
         with open("update.zip", "wb") as f:
             f.write(response.content)
+            print("Tool was successfully downloaded check your folder and extract the ZIP folder!")
+            time.sleep(20)
+            exit()
 
         with zipfile.ZipFile("update.zip", "r") as zip_ref:
             zip_ref.extractall(".")
 
-            os.remove("update.zip")
+        #os.remove("update.zip")
 
         # Restart the updated version
         python = sys.executable
@@ -41,15 +45,20 @@ def check_for_updates():
         response = input("Would you like to download the update? (Yes/No): ")
         if response.lower() == "yes":
             download_and_apply_update(latest_version)
+            time.sleep(1)
+            print("Tool was successfully downloaded check your folder and extract the ZIP folder!")
+            time.sleep(20)
+            exit()
+        if not response.lower() == "yes":
+            print("BRO HOW YOU GONNA USE THE TOOL IF ITS NOT UPDATED DUMBASS?")
+            time.sleep(10)
+            exit()
     else:
         print("Your program is up to date.")
-        time.sleep(2)
-        print("Im black")
-        time.sleep(100)
+        time.sleep(10)
 
-        
 def main():
-    print("Welcome to your application!")
+    print("Welcome to Jpxq All In One Tool")
     check_for_updates()
 
 if __name__ == "__main__":
